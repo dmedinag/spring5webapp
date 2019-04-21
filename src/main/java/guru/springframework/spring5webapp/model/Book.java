@@ -1,5 +1,6 @@
 package guru.springframework.spring5webapp.model;
 
+import java.util.Objects;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -14,6 +15,7 @@ public class Book {
     private Long id;
     private String title;
     private String isbn;
+
     @OneToOne
     private Publisher publisher;
 
@@ -85,7 +87,7 @@ public class Book {
 
         Book book = (Book) o;
 
-        return id != null ? id.equals(book.id) : book.id == null;
+        return Objects.equals(id, book.id);
     }
 
     @Override

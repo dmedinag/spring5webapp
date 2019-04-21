@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+/**
+ * Created by jt on 5/17/17.
+ */
 @Entity
 public class Publisher {
 
@@ -19,7 +22,6 @@ public class Publisher {
         this.name = name;
         this.address = address;
     }
-
     public Long getId() {
         return id;
     }
@@ -46,14 +48,12 @@ public class Publisher {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
         Publisher publisher = (Publisher) o;
-        return id.equals(publisher.id);
+
+        return Objects.equals(id, publisher.id);
     }
 
     @Override
@@ -61,5 +61,12 @@ public class Publisher {
         return Objects.hash(id);
     }
 
-
+    @Override
+    public String toString() {
+        return "Publisher{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
 }
